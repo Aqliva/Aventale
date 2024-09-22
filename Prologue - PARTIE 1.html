@@ -16,25 +16,58 @@
             display: block;
             margin: 0 auto; /* Pour centrer les images */
         }
+
+        /* Media query pour les petits écrans (max-width: 768px est commun pour les téléphones et tablettes) */
+        @media only screen and (max-width: 768px) {
+            img {
+                width: 100%; /* Les images prennent toute la largeur de l'écran sur les petits écrans */
+            }
+        }
+
+        /* Style des boutons */
+        .navigation {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
-    <img src="Plan de travail 1.jpg" alt="Webtoon Image 1">
-    <img src="Plan de travail 2.jpg" alt="Webtoon Image 2">
-    <img src="Plan de travail 3.jpg" alt="Webtoon Image 3">
-    <img src="Plan de travail 3 copie.jpg" alt="Webtoon Image 4">
-    <img src="Plan de travail 4.jpg" alt="Webtoon Image 5">
-    <img src="Plan de travail 5.jpg" alt="Webtoon Image 6">
-    <img src="Plan de travail 6.jpg" alt="Webtoon Image 7">
-    <img src="Plan de travail 7.jpg" alt="Webtoon Image 8">
-    <img src="Plan de travail 8.jpg" alt="Webtoon Image 9">
-    <img src="Plan de travail 9.jpg" alt="Webtoon Image 10">
-    <img src="Plan de travail 10.jpg" alt="Webtoon Image 11">
-    <img src="Plan de travail 11.jpg" alt="Webtoon Image 12">
-    <img src="Plan de travail 12.jpg" alt="Webtoon Image 13">
-    <img src="Plan de travail 13.jpg" alt="Webtoon Image 14">
-    <img src="Plan de travail 14.jpg" alt="Webtoon Image 15">
-    <img src="Plan de travail 15.jpg" alt="Webtoon Image 16">
-    <img src="Plan de travail 16.jpg" alt="Webtoon Image 17">
+    <div id="image-container"></div>
+
+    <div class="navigation">
+        <button id="prev-button" disabled>Précédent</button>
+        <button id="next-button" disabled>Suivant</button>
+    </div>
+
+    <script>
+        const imageContainer = document.getElementById('image-container');
+
+        for (let i = 1; i <= 17; i++) {
+            const img = document.createElement('img');
+            img.src = `chap1/Plan de travail ${i}.jpg`;
+            img.alt = `Webtoon Image ${i}`;
+            imageContainer.appendChild(img);
+        }
+
+        // Gestion de la navigation
+        document.getElementById('prev-button').addEventListener('click', function() {
+            window.location.href = 'chapitre3.html'; // Change "chapitre3.html" vers le fichier HTML du chapitre précédent
+        });
+
+        document.getElementById('next-button').addEventListener('click', function() {
+            window.location.href = 'Prologue - PARTIE 2.html'; // Change "chapitre2.html" vers le fichier HTML du chapitre suivant
+        });
+    </script>
 </body>
 </html>
