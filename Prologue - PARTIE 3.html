@@ -26,10 +26,10 @@
 
         /* Style des boutons */
         .navigation {
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
-        button {
+        button, select {
             padding: 10px 20px;
             font-size: 16px;
             margin: 5px;
@@ -40,14 +40,37 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
+        
+        select {
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
+    <div class="navigation">
+        <button id="prev-button-top">Précédent</button>
+
+        <select id="chapter-select-top">
+            <option value="Prologue - PARTIE 1.html">Chapitre 1</option>
+            <option value="Prologue - PARTIE 2.html">Chapitre 2</option>
+            <option value="Prologue - PARTIE 3.html">Chapitre 3</option>
+        </select>
+
+        <button id="next-button-top" disabled>Suivant</button> 
+    </div>
+
     <div id="image-container"></div>
 
     <div class="navigation">
         <button id="prev-button">Précédent</button>
-        <button id="next-button" disabled>Suivant</button>
+
+        <select id="chapter-select">
+            <option value="Prologue - PARTIE 1.html">Chapitre 1</option>
+            <option value="Prologue - PARTIE 2.html">Chapitre 2</option>
+            <option value="Prologue - PARTIE 3.html">Chapitre 3</option>
+        </select>
+
+        <button id="next-button" disabled>Suivant</button> 
     </div>
 
     <script>
@@ -60,13 +83,30 @@
             imageContainer.appendChild(img);
         }
 
+        document.getElementById('chapter-select-top').value = "Prologue - PARTIE 3.html";
+        document.getElementById('chapter-select').value = "Prologue - PARTIE 3.html";
+
         // Gestion de la navigation
+        document.getElementById('prev-button-top').addEventListener('click', function() {
+            window.location.href = 'Prologue - PARTIE 2.html'; 
+        });
+        document.getElementById('next-button-top').addEventListener('click', function() {
+            window.location.href = 'Prologue - PARTIE 4.html';
+        });
+        document.getElementById('chapter-select-top').addEventListener('change', function(event) {
+            const selectedChapter = event.target.value;
+            window.location.href = selectedChapter;
+        });
+        
         document.getElementById('prev-button').addEventListener('click', function() {
             window.location.href = 'Prologue - PARTIE 2.html';
         });
-
         document.getElementById('next-button').addEventListener('click', function() {
             window.location.href = 'Prologue - PARTIE 4.html';
+        });
+        document.getElementById('chapter-select').addEventListener('change', function(event) {
+            const selectedChapter = event.target.value;
+            window.location.href = selectedChapter;
         });
     </script>
 </body>
