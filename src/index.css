@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+img {
+  width: 35%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Media query pour les petits écrans (max-width: 768px est commun pour les téléphones et tablettes) */
+@media only screen and (max-width: 768px) {
+  img {
+      width: 100%; /* Les images prennent toute la largeur de l'écran sur les petits écrans */
+  }
+}
+
+/* Style des boutons */
+.navigation {
+  margin: 20px 0;
+}
+
+button, select {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+select {
+  font-size: 16px;
+}
