@@ -17,7 +17,7 @@ const generateChapterImages = (
     const images = Array.from({ length: endIndex - startIndex + 1 }, (_, i) => {
       const currentIndex = startIndex + i;
       return {
-        src: `/Aventale/chapters/chapter-${chapterId}/${language}/Plan de travail ${currentIndex}.jpg`,
+        src: `/chapters/chapter-${chapterId}/${language}/Plan de travail ${currentIndex}.jpg`,
         alt: `${chapterName} Image ${currentIndex} (${language})`,
       };
     });
@@ -29,7 +29,7 @@ const generateChapterImages = (
       );
       if (insertionIndex !== -1) {
         images.splice(insertionIndex + 1, 0, {
-          src: `/Aventale/chapters/chapter-${chapterId}/${language}/Plan de travail ${extraIndex}.jpg`,
+          src: `/chapters/chapter-${chapterId}/${language}/Plan de travail ${extraIndex}.jpg`,
           alt: `${chapterName} Image ${extraIndex} (${language})`,
         });
       } else {
