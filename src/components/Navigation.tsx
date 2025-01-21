@@ -51,10 +51,6 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <div className="navigation">
-      <button onClick={handleHomeClick}>
-        🏠︎
-      </button>
-
       <button onClick={handlePrevious} disabled={currentIndex === 0}>
         Précédent
       </button>
@@ -69,6 +65,9 @@ const Navigation: React.FC<NavigationProps> = ({
         Suivant
       </button>
 
+      <button onClick={handleHomeClick}>
+        🏠︎
+      </button>
       <select value={currentLanguage} onChange={handleLanguageSelectChange}>
         {Object.entries(LANGUAGES).map(([langCode, langName]) => (
           <option key={langCode} value={langCode}>

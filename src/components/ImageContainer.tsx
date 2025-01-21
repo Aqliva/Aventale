@@ -1,4 +1,5 @@
 import React from "react";
+import "./ImageContainer.css";
 
 interface Image {
   src: string;
@@ -12,7 +13,7 @@ interface ImageContainerProps {
 const ImageContainer: React.FC<ImageContainerProps> = ({ images }) => {
   return (
     
-    <div id="image-container">
+    <div className="image-container">
       {images.map((image, index) => (
         <img key={index} src={image.src} alt={image.alt} />
       ))}
