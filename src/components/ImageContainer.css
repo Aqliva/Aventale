@@ -6,7 +6,7 @@
 
 /* Media query pour les petits écrans (max-width: 768px est commun pour les téléphones et tablettes) */
 @media only screen and (max-width: 768px) {
-  img {
+  .image-container img {
       width: 100%; /* Les images prennent toute la largeur de l'écran sur les petits écrans */
   }
 }

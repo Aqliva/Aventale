@@ -51,30 +51,34 @@ const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <div className="navigation">
-      <button onClick={handlePrevious} disabled={currentIndex === 0}>
-        Précédent
-      </button>
-      <select value={currentChapter.id} onChange={handleSelectChange}>
-        {chapters.map((chapter) => (
-          <option key={chapter.id} value={chapter.id}>
-            {chapter.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleNext} disabled={currentIndex === chapters.length - 1}>
-        Suivant
-      </button>
+      <div>
+        <button onClick={handlePrevious} disabled={currentIndex === 0}>
+          Précédent
+        </button>
+        <select value={currentChapter.id} onChange={handleSelectChange}>
+          {chapters.map((chapter) => (
+            <option key={chapter.id} value={chapter.id}>
+              {chapter.name}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleNext} disabled={currentIndex === chapters.length - 1}>
+          Suivant
+        </button>
+      </div>
 
-      <button onClick={handleHomeClick}>
-        🏠︎
-      </button>
-      <select value={currentLanguage} onChange={handleLanguageSelectChange}>
-        {Object.entries(LANGUAGES).map(([langCode, langName]) => (
-          <option key={langCode} value={langCode}>
-            {langName}
-          </option>
-        ))}
-      </select>
+      <div>
+        <button onClick={handleHomeClick}>
+          🏠︎
+        </button>
+        <select value={currentLanguage} onChange={handleLanguageSelectChange}>
+          {Object.entries(LANGUAGES).map(([langCode, langName]) => (
+            <option key={langCode} value={langCode}>
+              {langName}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };
