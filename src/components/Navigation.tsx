@@ -1,6 +1,7 @@
 import React from "react";
 import { Chapter } from "../App";
 import { LANGUAGES, LanguageCode } from "../config";
+import { useNavigate } from "react-router-dom";
 
 interface NavigationProps {
   currentChapter: Chapter;
@@ -17,6 +18,8 @@ const Navigation: React.FC<NavigationProps> = ({
   currentLanguage,
   onLanguageChange,
 }) => {
+  const navigate = useNavigate();
+
   const currentIndex = chapters.findIndex((c) => c.id === currentChapter.id);
 
   const handlePrevious = () => {
@@ -42,8 +45,16 @@ const Navigation: React.FC<NavigationProps> = ({
     onLanguageChange(event.target.value as LanguageCode);
   };
 
+  const handleHomeClick = () => {
+    navigate("/Aventale");
+  };
+
   return (
     <div className="navigation">
+      <button onClick={handleHomeClick}>
+        🏠︎
+      </button>
+
       <button onClick={handlePrevious} disabled={currentIndex === 0}>
         Précédent
       </button>

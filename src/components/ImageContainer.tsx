@@ -11,6 +11,7 @@ interface ImageContainerProps {
 
 const ImageContainer: React.FC<ImageContainerProps> = ({ images }) => {
   return (
+    
     <div id="image-container">
       {images.map((image, index) => (
         <img key={index} src={image.src} alt={image.alt} />

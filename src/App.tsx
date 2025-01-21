@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import Navigation from "./components/Navigation";
-import ImageContainer from "./components/ImageContainer";
-import chapterData from "./data/chapterData.tsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LanguageCode } from './config';
+import HomePage from "./components/HomePage";
+import ChapterPage from "./components/ChapterPage";
 
 export interface Chapter {
   id: string;
@@ -13,35 +12,13 @@ export interface Chapter {
 }
 
 function App() {
-  const [currentChapter, setCurrentChapter] = useState<Chapter>(chapterData[0]);
-  const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>("fr");
-
-  const handleChapterChange = (chapter: Chapter) => {
-    setCurrentChapter(chapter);
-  };
-
-  const handleLanguageChange = (language: LanguageCode) => {
-    setCurrentLanguage(language);
-  };
-
   return (
-    <div>
-      <Navigation
-        currentChapter={currentChapter}
-        chapters={chapterData}
-        onChapterChange={handleChapterChange}
-        currentLanguage={currentLanguage}
-        onLanguageChange={handleLanguageChange}
-      />
-      <ImageContainer images={currentChapter.images[currentLanguage]} />
-      <Navigation
-        currentChapter={currentChapter}
-        chapters={chapterData}
-        onChapterChange={handleChapterChange}
-        currentLanguage={currentLanguage}
-        onLanguageChange={handleLanguageChange}
-      />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/Aventale" element={<HomePage />} />
+        <Route path="/Aventale/chapters/:id" element={<ChapterPage />} />
+      </Routes>
+    </Router>
   );
 }
 

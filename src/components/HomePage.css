@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "GenshinFont";
+  src: url("/src/assets/zh-cn.ttf") format("truetype");
+}
+
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+	height: 90vh;
+	margin: 5vh;
+  font-family: "GenshinFont", sans-serif;
+}
+
+.homepage-image {
+  width: 50vh;
+}
+
+.title {
+  font-size: 2.6vh;
+	font-weight: lighter;
+}
+
+.synopsis-container {
+  background-image: url("/src/assets/homepage/BlueBG.png");
+	background-size: contain;
+  background-repeat: no-repeat; 
+  background-position: center; 
+  width: 60vh;
+}
+
+.synopsis {
+	padding-top: 1.5vh;
+	padding-bottom: 0.5vh;
+	padding-left: 3.2vh;
+	padding-right: 3.2vh;
+  font-size: 1.7vh;
+	line-height: 1.6;
+}
+
+.homepage-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+	margin-top: 1.5vh;
+}
+
+.button-image {
+  width: 35vh;
+}
