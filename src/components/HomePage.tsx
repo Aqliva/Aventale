@@ -11,7 +11,7 @@ function HomePage() {
   return (
     <div className="homepage">
       <img
-        src="./Aventale/src/assets/homepage/Cover_Square.jpg"
+        src="/Aventale/src/assets/homepage/Cover_Square.jpg"
         alt="Cover Page"
         className="homepage-image"
       />
@@ -27,7 +27,7 @@ function HomePage() {
       </div>
       <button className="homepage-button" onClick={handleStartClick}>
         <img
-          src="./Aventale/src/assets/homepage/Bouton_FirstEP.png"
+          src="/Aventale/src/assets/homepage/Bouton_FirstEP.png"
           alt="Premier Chapitre"
           className="button-image"
         />
