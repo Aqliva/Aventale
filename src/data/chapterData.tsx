@@ -7,7 +7,7 @@ const generateChapterImages = (
   startIndex: number,
   endIndex: number,
   languages: LanguageCode[],
-  extraImages: { indexAfter: number; extraIndex: string }[] = []
+  extraImages: { indexAfter: string; extraIndex: string }[] = []
 ): Chapter => {
   // Tableau pour stocker les images de chaque langue
   const allImages: { [key: string]: { src: string; alt: string }[] } = {};
@@ -57,10 +57,17 @@ const generateChapterImages = (
 const chapterData: Chapter[] = [
   generateChapterImages("1", "Chapitre 1", 1, 16, Object.keys(LANGUAGES) as LanguageCode[], 
     [
-      { indexAfter: 3, extraIndex: "3 copie" }
+      { indexAfter: "3", extraIndex: "3 copie" }
     ]),
   generateChapterImages("2", "Chapitre 2", 16, 23, Object.keys(LANGUAGES) as LanguageCode[]),
   generateChapterImages("3", "Chapitre 3", 24, 37, Object.keys(LANGUAGES) as LanguageCode[]),
+  
+  /* EXEMPLE :
+  generateChapterImages(url & nom_du_dossier, nom_du_chapitre, numero_de_la_premiere_planche, numero_de_la_derniere_planche, Object.keys(LANGUAGES) as LanguageCode[], 
+    [
+      { indexAfter: inserer_apres_la_planche, extraIndex: nom_de_la_planche }
+    ]),
+  */
 ];
 
 export default chapterData;
