@@ -27,7 +27,7 @@ const generateChapterImages = (
       const insertionIndex = images.findIndex((img) =>
         img.src.includes(`Plan de travail ${indexAfter}.jpg`)
       );
-      if (insertionIndex !== -1) {
+      if (insertionIndex !== -1 || indexAfter === "-1") {
         images.splice(insertionIndex + 1, 0, {
           src: `/Aventale/chapters/chapter-${chapterId}/${language}/Plan de travail ${extraIndex}.jpg`,
           alt: `${chapterName} Image ${extraIndex} (${language})`,
@@ -55,19 +55,21 @@ const generateChapterImages = (
 };
 
 const chapterData: Chapter[] = [
-  generateChapterImages("1", "Chapitre 1", 1, 16, Object.keys(LANGUAGES) as LanguageCode[], 
+  generateChapterImages("1", "Chapitre 1", 1, 11, Object.keys(LANGUAGES) as LanguageCode[], 
     [
-      { indexAfter: "3", extraIndex: "3 copie" }
+      { indexAfter: "3", extraIndex: "3 copie" },
+      { indexAfter: "11", extraIndex: "12B" },
     ]),
-  generateChapterImages("2", "Chapitre 2", 16, 23, Object.keys(LANGUAGES) as LanguageCode[]),
-  generateChapterImages("3", "Chapitre 3", 24, 37, Object.keys(LANGUAGES) as LanguageCode[]),
-  
-  /* EXEMPLE :
-  generateChapterImages(url & nom_du_dossier, nom_du_chapitre, numero_de_la_premiere_planche, numero_de_la_derniere_planche, Object.keys(LANGUAGES) as LanguageCode[], 
+  generateChapterImages("2", "Chapitre 2", 13, 15, Object.keys(LANGUAGES) as LanguageCode[], 
     [
-      { indexAfter: inserer_apres_la_planche, extraIndex: nom_de_la_planche }
+      { indexAfter: "-1", extraIndex: "12C" },
+      { indexAfter: "15", extraIndex: "16B" },
+      { indexAfter: "16B", extraIndex: "16C" },
+      { indexAfter: "16C", extraIndex: "17B" },
+      { indexAfter: "17B", extraIndex: "17C" },
     ]),
-  */
+  generateChapterImages("3", "Chapitre 3", 18, 23, Object.keys(LANGUAGES) as LanguageCode[]),
+  generateChapterImages("4", "Chapitre 4", 24, 37, Object.keys(LANGUAGES) as LanguageCode[]),
 ];
 
 export default chapterData;
