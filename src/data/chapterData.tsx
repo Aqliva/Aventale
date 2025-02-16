@@ -18,7 +18,7 @@ const generateChapterImages = (
       const currentIndex = startIndex + i;
       return {
         src: `/Aventale/chapters/chapter-${chapterId}/${language}/Plan de travail ${currentIndex}.jpg`,
-        alt: `${chapterName} Image ${currentIndex} (${language})`,
+        alt: ``, //${chapterName} Image ${currentIndex} (${language})
       };
     });
 
@@ -30,7 +30,7 @@ const generateChapterImages = (
       if (insertionIndex !== -1 || indexAfter === "-1") {
         images.splice(insertionIndex + 1, 0, {
           src: `/Aventale/chapters/chapter-${chapterId}/${language}/Plan de travail ${extraIndex}.jpg`,
-          alt: `${chapterName} Image ${extraIndex} (${language})`,
+          alt: ``, //${chapterName} Image ${extraIndex} (${language})
         });
       } else {
         console.error(
@@ -68,8 +68,17 @@ const chapterData: Chapter[] = [
       { indexAfter: "16C", extraIndex: "17B" },
       { indexAfter: "17B", extraIndex: "17C" },
     ]),
-  generateChapterImages("3", "Chapitre 3", 18, 23, Object.keys(LANGUAGES) as LanguageCode[]),
-  generateChapterImages("4", "Chapitre 4", 24, 37, Object.keys(LANGUAGES) as LanguageCode[]),
+  generateChapterImages("3", "Chapitre 3", 18, 21, Object.keys(LANGUAGES) as LanguageCode[]),
+  generateChapterImages("4", "Chapitre 4", 23, 37, Object.keys(LANGUAGES) as LanguageCode[],
+    [
+      { indexAfter: "-1", extraIndex: "22B" },
+      { indexAfter: "23", extraIndex: "24B" },
+      { indexAfter: "27", extraIndex: "28B" }
+    ]),
+  generateChapterImages("5", "Chapitre 5", 30, 37, Object.keys(LANGUAGES) as LanguageCode[],
+    [
+      { indexAfter: "-1", extraIndex: "29B" }
+    ]),
 ];
 
 export default chapterData;
