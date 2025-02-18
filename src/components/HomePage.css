@@ -14,7 +14,7 @@
 }
 
 .homepage-image {
-  height: 50%;
+  height: 80%;
   object-fit: contain;
 }
 
@@ -55,6 +55,5 @@
 }
 
 .button-image {
-  width: 75%;
-  max-width: 17em;
+  width: 70%;
 }
