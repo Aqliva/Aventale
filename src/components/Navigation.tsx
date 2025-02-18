@@ -57,12 +57,16 @@ const Navigation: React.FC<NavigationProps> = ({
         </button>
         <select value={currentChapter.id} onChange={handleSelectChange}>
           {chapters.map((chapter) => (
-            <option key={chapter.id} value={chapter.id}>
+            <option 
+              key={chapter.id} 
+              value={chapter.id}
+              disabled={chapter.id === "4" || chapter.id === "5"}
+            >
               {chapter.name}
             </option>
           ))}
         </select>
-        <button onClick={handleNext} disabled={currentIndex === chapters.length - 1}>
+        <button onClick={handleNext} disabled={currentIndex === chapters.length - 3}>
           Suivant
         </button>
       </div>
