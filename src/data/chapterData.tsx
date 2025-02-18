@@ -69,7 +69,7 @@ const chapterData: Chapter[] = [
       { indexAfter: "17B", extraIndex: "17C" },
     ]),
   generateChapterImages("3", "Chapitre 3", 18, 21, Object.keys(LANGUAGES) as LanguageCode[]),
-  generateChapterImages("4", "Chapitre 4", 23, 37, Object.keys(LANGUAGES) as LanguageCode[],
+  /*generateChapterImages("4", "Chapitre 4", 23, 37, Object.keys(LANGUAGES) as LanguageCode[],
     [
       { indexAfter: "-1", extraIndex: "22B" },
       { indexAfter: "23", extraIndex: "24B" },
@@ -78,7 +78,7 @@ const chapterData: Chapter[] = [
   generateChapterImages("5", "Chapitre 5", 30, 37, Object.keys(LANGUAGES) as LanguageCode[],
     [
       { indexAfter: "-1", extraIndex: "29B" }
-    ]),
+    ]),*/
 ];
 
 export default chapterData;
