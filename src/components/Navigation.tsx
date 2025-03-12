@@ -60,7 +60,7 @@ const Navigation: React.FC<NavigationProps> = ({
             <option 
               key={chapter.id} 
               value={chapter.id}
-              disabled={chapter.id === "4" || chapter.id === "5"}
+              disabled={chapter.id === "5"}
             >
               {chapter.name}
             </option>
