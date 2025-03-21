@@ -30,21 +30,25 @@ const generateChapterImages = (
   // Ajout des images supplémentaires
   extraImages.forEach(({ indexAfter, extraIndex }) => {
     const insertionIndex = images.findIndex((img) =>
-      img.src.includes(`Plan de travail ${indexAfter}.jpg`)
+      img.src.includes(version == 0 ? `Plan de travail ${indexAfter}.jpg` : `CLEAN_CHAPITRE${chapterId=="0"?"1":chapterId}_${indexAfter.toString().padStart(2, '0')}.jpg`)
     );
     if (insertionIndex !== -1 || indexAfter === "-1") {
       const newImage = {
-          src: `/Aventale/chapters/chapter-${chapterId}/${language}/Plan de travail ${extraIndex}.jpg`,
-          alt: ``,
+        src: version == 0 ? 
+          `/Aventale/chapters/chapter-${chapterId}/${language}/Plan de travail ${extraIndex}.jpg` :
+          `/Aventale/chapters/chapter-${chapterId}/${language}/CLEAN_CHAPITRE${chapterId=="0"?"1":chapterId}_${extraIndex}.jpg`,
+        alt: ``,
       };
+      allImages.splice(insertionIndex + 1, 0, newImage);
       images.splice(insertionIndex + 1, 0, newImage);
-      allImages.push(newImage);
     } else {
       console.error(
         `Image insertion failed: could not find image after which to insert ${extraIndex}`
       );
     }
   });
+
+  console.log(allImages);
 
   // Retourner un chapitre avec toutes les versions des images
   return {
@@ -61,7 +65,10 @@ const chapterData: Chapter[] = [
       { indexAfter: "3", extraIndex: "3 copie" },
       { indexAfter: "11", extraIndex: "12B" },
     ]),
-  generateChapterImages("1", "Chapitre 1", 20, 112, "en", 1),
+  generateChapterImages("1", "Chapitre 1", 20, 112, "en", 1,
+    [
+      { indexAfter: "27", extraIndex: "27B" },
+    ]),
   generateChapterImages("2", "Chapitre 2", 13, 15, "fr", 0,
     [
       { indexAfter: "-1", extraIndex: "12C" },
