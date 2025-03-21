@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { LanguageCode } from '../config';
 import { Chapter } from "../App";
 import Navigation from "./Navigation";
@@ -10,8 +10,6 @@ function ChapterPage() {
   const { id, lang } = useParams<{ id: string; lang: string }>();
   const [currentChapter, setCurrentChapter] = useState<Chapter>(chapterData.find(chap => chap.id === id + (lang || "fr")) || chapterData[0]);
   const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>("fr");
-
-  const navigate = useNavigate();
 
   // Mettre à jour currentLanguage à chaque fois que l'URL change
   useEffect(() => {
