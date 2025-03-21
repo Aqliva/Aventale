@@ -63,9 +63,6 @@ const Navigation: React.FC<NavigationProps> = ({
   
     onChapterChange(newChapter);
     navigate(`/Aventale/chapters/${newChapter.id.slice(0, -2)}/${newLanguage}`);
-  
-    // Forcer le rechargement de ChapterPage
-    window.location.reload();
   };  
 
   // Retour à l'accueil

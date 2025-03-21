@@ -15,6 +15,7 @@ function ChapterPage() {
   useEffect(() => {
     if (lang) {
       setCurrentLanguage(lang as LanguageCode);  // met à jour le language
+      setCurrentChapter(chapterData.find(chap => chap.id === id + lang) || chapterData[0]);
     }
   }, [lang]);  // Écoute le changement de 'lang' dans l'URL
 
