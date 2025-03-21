@@ -20,31 +20,55 @@ const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const currentIndex = chapters.findIndex((c) => c.id === currentChapter.id);
+  // Filtrer les chapitres par langue
+  const filteredChapters = chapters.filter((chap) => chap.id.endsWith(currentLanguage));
+  const currentIndex = filteredChapters.findIndex((c) => c.id === currentChapter.id);
 
+  // Aller au chapitre précédent
   const handlePrevious = () => {
     if (currentIndex > 0) {
-      onChapterChange(chapters[currentIndex - 1]);
+      const newChapter = filteredChapters[currentIndex - 1];
+      onChapterChange(newChapter);
+      navigate(`/Aventale/chapters/${newChapter.id.slice(0, -2)}/${currentLanguage}`);
       window.scrollTo(0, 0);
     }
   };
 
+  // Aller au chapitre suivant
   const handleNext = () => {
-    if (currentIndex < chapters.length - 1) {
-      onChapterChange(chapters[currentIndex + 1]);
+    if (currentIndex < filteredChapters.length - 1) {
+      const newChapter = filteredChapters[currentIndex + 1];
+      onChapterChange(newChapter);
+      navigate(`/Aventale/chapters/${newChapter.id.slice(0, -2)}/${currentLanguage}`);
       window.scrollTo(0, 0);
     }
   };
 
+  // Changer de chapitre via le menu déroulant
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedChapter = chapters.find((c) => c.id === event.target.value);
-    if (selectedChapter) onChapterChange(selectedChapter);
+    if (selectedChapter) {
+      onChapterChange(selectedChapter);
+      navigate(`/Aventale/chapters/${selectedChapter.id.slice(0, -2)}/${currentLanguage}`);
+    }
   };
 
+  // Changer de langue et mettre à jour l'URL + recharger ChapterPage
   const handleLanguageSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onLanguageChange(event.target.value as LanguageCode);
-  };
+    const newLanguage = event.target.value as LanguageCode;
+    onLanguageChange(newLanguage);
+  
+    const newLanguageChapters = chapters.filter((c) => c.id.endsWith(newLanguage));
+    let newChapter = newLanguageChapters.length > 0 ? newLanguageChapters[0] : currentChapter;
+  
+    onChapterChange(newChapter);
+    navigate(`/Aventale/chapters/${newChapter.id.slice(0, -2)}/${newLanguage}`);
+  
+    // Forcer le rechargement de ChapterPage
+    window.location.reload();
+  };  
 
+  // Retour à l'accueil
   const handleHomeClick = () => {
     navigate("/Aventale");
   };
@@ -56,25 +80,23 @@ const Navigation: React.FC<NavigationProps> = ({
           Précédent
         </button>
         <select value={currentChapter.id} onChange={handleSelectChange}>
-          {chapters.map((chapter) => (
+          {filteredChapters.map((chapter) => (
             <option 
               key={chapter.id} 
               value={chapter.id}
-              disabled={chapter.id === "5"}
+              disabled={chapter.id.includes("5")}
             >
               {chapter.name}
             </option>
           ))}
         </select>
-        <button onClick={handleNext} disabled={currentIndex === chapters.length - 3}>
+        <button onClick={handleNext} disabled={currentIndex === filteredChapters.length - 1}>
           Suivant
         </button>
       </div>
 
       <div>
-        <button onClick={handleHomeClick}>
-          🏠︎
-        </button>
+        <button onClick={handleHomeClick}>🏠︎</button>
         <select value={currentLanguage} onChange={handleLanguageSelectChange}>
           {Object.entries(LANGUAGES).map(([langCode, langName]) => (
             <option key={langCode} value={langCode}>

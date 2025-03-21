@@ -1,14 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { LanguageCode } from './config';
 import HomePage from "./components/HomePage";
 import ChapterPage from "./components/ChapterPage";
 
 export interface Chapter {
   id: string;
   name: string;
-  images: {
-    [key in LanguageCode]: { src: string; alt: string }[];
-  };
+  images: { src: string; alt: string }[];
 }
 
 function App() {
@@ -16,7 +13,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/Aventale" element={<HomePage />} />
-        <Route path="/Aventale/chapters/:id" element={<ChapterPage />} />
+        <Route path="/Aventale/chapters/:id/:lang" element={<ChapterPage />} />
       </Routes>
     </Router>
   );

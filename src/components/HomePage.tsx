@@ -5,7 +5,7 @@ function HomePage() {
   const navigate = useNavigate();
 
   const handleStartClick = () => {
-    navigate("/Aventale/chapters/1");
+    navigate("/Aventale/chapters/1/fr");
   };
 
   return (

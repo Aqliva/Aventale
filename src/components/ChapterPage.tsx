@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from "react-router-dom";
 import { LanguageCode } from '../config';
 import { Chapter } from "../App";
 import Navigation from "./Navigation";
@@ -7,17 +7,22 @@ import ImageContainer from "./ImageContainer";
 import chapterData from "../data/chapterData";
 
 function ChapterPage() {
-  const { id } = useParams<{ id: string }>();
-  const chapterIndex = id ? parseInt(id, 10) - 1 : 0;
-  const [currentChapter, setCurrentChapter] = useState<Chapter>(chapterData[chapterIndex]);
+  const { id, lang } = useParams<{ id: string; lang: string }>();
+  const [currentChapter, setCurrentChapter] = useState<Chapter>(chapterData.find(chap => chap.id === id + (lang || "fr")) || chapterData[0]);
   const [currentLanguage, setCurrentLanguage] = useState<LanguageCode>("fr");
+
+  const navigate = useNavigate();
+
+  // Mettre à jour currentLanguage à chaque fois que l'URL change
+  useEffect(() => {
+    if (lang) {
+      setCurrentLanguage(lang as LanguageCode);  // met à jour le language
+    }
+  }, [lang]);  // Écoute le changement de 'lang' dans l'URL
 
   const handleChapterChange = (newChapter: Chapter) => {
     setCurrentChapter(newChapter);
-
-    // Met à jour l'URL dans la barre d'adresse pour refléter le changement de chapitre
-    const newChapterIndex = chapterData.findIndex((chapter) => chapter.id === newChapter.id);
-    const newUrl = `/Aventale/chapters/${newChapterIndex + 1}`;
+    const newUrl = `/Aventale/chapters/${newChapter.id.slice(0, -2)}/${currentLanguage}`;
     window.history.pushState({}, "", newUrl);
   };
 
@@ -34,7 +39,7 @@ function ChapterPage() {
         currentLanguage={currentLanguage}
         onLanguageChange={handleLanguageChange}
       />
-      <ImageContainer images={currentChapter.images[currentLanguage]} />
+      <ImageContainer images={currentChapter.images} />
       <Navigation
         currentChapter={currentChapter}
         chapters={chapterData}
