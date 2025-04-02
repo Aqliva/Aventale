@@ -59,7 +59,7 @@ const generateChapterImages = (
 };
 
 const chapterData: Chapter[] = [
-  generateChapterImages("0", "Chapter 0", 1, 20, "en", 1),
+  generateChapterImages("0", "Chapter 0", 1, 21, "en", 1),
   generateChapterImages("1", "Chapitre 1", 1, 11, "fr", 0,
     [
       { indexAfter: "3", extraIndex: "3 copie" },
