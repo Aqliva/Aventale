@@ -86,6 +86,7 @@ const chapterData: Chapter[] = [
       { indexAfter: "23", extraIndex: "24B" },
       { indexAfter: "27", extraIndex: "28B" }
     ]),
+  generateChapterImages("4", "Chapter 4: Ascension", 1, 94, "en", 1),
   generateChapterImages("5", "Chapitre 5", 30, 37, "fr", 0,
     [
       { indexAfter: "-1", extraIndex: "29B" }
