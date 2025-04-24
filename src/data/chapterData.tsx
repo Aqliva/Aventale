@@ -80,10 +80,10 @@ const chapterData: Chapter[] = [
       { indexAfter: "17B", extraIndex: "17C" },
     ]),
   generateChapterImages("2", "Chapter 2: The chosen one", 1, 61, "en", 1),
-  generateChapterImages("2", "第2章：   被选中的人", 1, 60, "zh", 1),
+  generateChapterImages("2", "第2章：被选中的人", 1, 60, "zh", 1),
   generateChapterImages("3", "Chapitre 3", 18, 21, "fr", 0),
   generateChapterImages("3", "Chapter 3: Legacy", 1, 61, "en", 1),
-  generateChapterImages("3", "第三章：传承", 1, 61, "zh", 1),
+  generateChapterImages("3", "第3章：传承", 1, 61, "zh", 1),
   generateChapterImages("4", "Chapitre 4", 23, 37, "fr", 0,
     [
       { indexAfter: "-1", extraIndex: "22B" },
