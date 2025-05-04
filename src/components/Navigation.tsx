@@ -2,6 +2,7 @@ import React from "react";
 import { Chapter } from "../App";
 import { LANGUAGES, LanguageCode } from "../config";
 import { useNavigate } from "react-router-dom";
+import { TRANSLATIONS } from "../translations.ts";
 
 interface NavigationProps {
   currentChapter: Chapter;
@@ -19,6 +20,8 @@ const Navigation: React.FC<NavigationProps> = ({
   onLanguageChange,
 }) => {
   const navigate = useNavigate();
+
+  const t = TRANSLATIONS[currentLanguage];
 
   // Filtrer les chapitres par langue
   const filteredChapters = chapters.filter((chap) => chap.id.endsWith(currentLanguage));
@@ -74,7 +77,7 @@ const Navigation: React.FC<NavigationProps> = ({
     <div className="navigation">
       <div>
         <button onClick={handlePrevious} disabled={currentIndex === 0}>
-          Précédent
+          {t.previous}
         </button>
         <select value={currentChapter.id} onChange={handleSelectChange}>
           {filteredChapters.map((chapter) => (
@@ -88,7 +91,7 @@ const Navigation: React.FC<NavigationProps> = ({
           ))}
         </select>
         <button onClick={handleNext} disabled={currentIndex === filteredChapters.length - 1 || currentChapter.id.includes("4")}>
-          Suivant
+          {t.next}
         </button>
       </div>
 

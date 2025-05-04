@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      const redirectTo = location.pathname + location.search + location.hash;
+      sessionStorage.setItem("redirectAfter404", redirectTo);
+      location.href = "/Aventale/";
+    </script>
+  </head>
+  <body></body>
+</html>
