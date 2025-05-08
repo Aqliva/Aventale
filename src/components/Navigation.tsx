@@ -90,7 +90,9 @@ const Navigation: React.FC<NavigationProps> = ({
             </option>
           ))}
         </select>
-        <button onClick={handleNext}         </button>
+        <button onClick={handleNext}>
+          {t.next}
+        </button>
       </div>
 
       <div>
