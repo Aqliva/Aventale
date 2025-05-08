@@ -90,9 +90,7 @@ const Navigation: React.FC<NavigationProps> = ({
             </option>
           ))}
         </select>
-        <button onClick={handleNext} disabled={currentIndex === filteredChapters.length - 1 || currentChapter.id.includes("4")}>
-          {t.next}
-        </button>
+        <button onClick={handleNext}         </button>
       </div>
 
       <div>
