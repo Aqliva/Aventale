@@ -95,6 +95,7 @@ const chapterData: Chapter[] = [
     [
       { indexAfter: "-1", extraIndex: "29B" }
     ]),
+  generateChapterImages("5", "Chapter 5: Tentation", 1, 68, "en", 1),
 ];
 
 export default chapterData;
